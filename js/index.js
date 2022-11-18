@@ -26,13 +26,15 @@ for (let i = 0; i < 100; i++) {
 для користувача. 
 Загальну логіку (тобто зазначений метод) винести на прототип.*/
 User.prototype.getFullName = function () {
-  return `${this.firstName} + ${this.lastName}`;
+  return `${this.firstName} ${this.lastName}`;
 };
 console.log("users.pop().getFullName()", users.pop().getFullName());
 //1.2 Отримати масив повних імен осіб жіночої статі шкільного віку (6 – 18 років).
-const girls = users.filter(function isGirl(item) {
-  return !item.isMale && item.age >= 6 && item.age <= 18;
-});
+const girls = users
+  .filter(function isGirl(item) {
+    return !item.isMale && item.age >= 6 && item.age <= 18;
+  })
+  .map((item) => item.getFullName());
 console.log("girls", girls);
 //1.3 Видалити з масиву користувача з email useremail5@gmail.com
 //Can be few emails useremail5@gmail.com
